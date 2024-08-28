@@ -5,7 +5,7 @@ A data exploration of suicide rates in the 21st century.
 
 ## Detailed Report
 This README file serves as a brief introduction to the project.
-**[The complete exploration and report can be accessed here](INSERT WEBSITE URL HERE).**
+**[The complete exploration and report can be accessed here](https://jamesinjune.github.io/Epidemiology_of_Suicide/).**
 
 ---
 
