@@ -1,4 +1,4 @@
-# Suicide Rates Exploration
+# Epidemiology of Suicide
 A data exploration of suicide rates in the 21st century.
 
 ---
