@@ -1,0 +1,1359 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Read Only by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div class="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						
+						<div class="topnav">
+							<a href="">James Li</a>
+							&emsp;
+							&emsp;
+							&emsp;
+							<a href="https://github.com/jamesinjune?tab=repositories">GitHub</a>
+
+						</div>
+						
+						<hr class="solid">
+
+						  
+						<!--
+						<nav class="toc">
+							<ol>
+								<li>
+									<a href="#overview">Project Overview</a>
+									<ol>
+										<li><a href="#key_questions">Key Questions</a></li>
+										<li><a href="#key_insights">Key Insights</a></li>
+										<li><a href="#tools">Tools</a></li>
+									</ol>
+								</li>
+								<li>
+									<a href="#datasets">Datasets</a>
+									<ol>
+										<li><a href="#suicides_dataset">Suicides Dataset</a></li>
+										<li><a href="#happiness_dataset">Happiness Index Dataset</a></li>
+										<li><a href="#age_standardized">Crude vs. Age-Standardized Mortality</a></li>
+									</ol>
+								</li>
+								<li>
+									<a href="#python_cleaning">Data Cleaning (Python)</a>
+							  		<ol>
+										<li><a href="#suicides_cleaning">Suicides Dataset Cleaning</a></li>
+										<li><a href="#error_note">A brief note on error</a></li>
+										<li><a href="#missing_val_note">A brief note on missing values</a></li>
+										<li><a href="#happiness_cleaning">Happiness Dataset Cleaning</a></li>
+							  		</ol>
+								</li>
+								<li>
+									<a href="#querying_datasets">Querying Datasets and Extracting Views (SQL)</a>
+								</li>
+								<li>
+									<a href="#key_questions">Key Questions</a>
+								</li>
+								<li>
+									<a href="#suicides_within_year">Suicide Rates <br> Within Each Year</a>
+							  		<ol>
+										<li><a href="#within_year_country">Country-Level</a></li>
+										<li><a href="#within_year_age">Age Group</a></li>
+										<li><a href="#within_year_sex">Sex-Based</a></li>
+										<li><a href="#within_year_insights">Notable Insights</a></li>
+										<li><a href="#within_year_additional">Additional Charts</a></li>
+							  		</ol>
+								</li>
+								<li>
+									<a href="#suicides_across_years">Suicide Rates Over Time (2006-2019)</a>
+							  		<ol>
+										<li><a href="#across_year_country">Country-Level</a></li>
+										<li><a href="#across_year_age">Age Group</a></li>
+										<li><a href="#across_year_sex">Sex-Based</a></li>
+										<li><a href="#across_year_insights">Notable Insights</a></li>
+										<li><a href="#across_year_additional">Additional Charts</a></li>
+							  		</ol>
+								</li>
+								<li>
+									<a href="#suicides_happiness">Suicide Rates and Happiness: Correlation?</a>
+							  		<ol>
+										<li><a href="#happiness_brief_look">A brief look at the Happiness Index</a></li>
+										<li><a href="#acceptable_r_squared">Acceptable R-squared Values</a></li>
+										<li><a href="#suicides_happiness_compare">Suicide Rates and Happiness</a></li>
+										<li><a href="#happy_vs_unhappy">Happy vs. Unhappy Countries</a></li>
+										<li><a href="#happiness_insights">Notable Insights</a></li>
+										<li><a href="#happiness_additional">Additional Charts</a></li>
+							  		</ol>
+								</li>
+								<li>
+									<a href="#limitations">Limitations</a>
+								</li>
+								<li>
+									<a href="#references">References</a>
+								</li>
+							</ol>
+						  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+							<path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+						  </svg>
+						</nav>
+						-->
+
+						
+
+						<section id="title">
+							<div class="container">
+								<h1>Statistics and Insights into Suicide Rates in the Modern Day</h1>
+								<h6>July 9, 2024</h6>
+							</div>
+						</section>
+
+						<!-- One -->
+							<section id="overview">
+								<div class="container">
+									<h2>1. Project Overview</h2>
+									<p>This exploration aims to investigate patterns and trends in suicide rates from 2006-2019 across the
+										world, as well as their correlation to the measured happiness of a country. We also examine how
+										these differ by age and sex within countries, as well as on a global scale. The goal is to further our
+										understanding of suicides around the world in order to find out how different groups are affected
+										and guide our search in finding better solutions.</p>
+									<p>All project files can be accessed <a href="https://github.com/jamesinjune/Suicide_Rates_Exploration">here on GitHub</a>.</p>
+									</div>
+							</section>
+
+							<section id="contents">
+								<div class="container">
+									<header class="major">
+										<h3>Table of Contents</h3>
+										<ol>
+											<li>
+												<a href="#overview">Project Overview</a>
+												<ol>
+													<li><a href="#key_insights">Key Insights</a></li>
+													<li><a href="#tools">Tools</a></li>
+												</ol>
+											</li>
+											<li>
+												<a href="#datasets">Datasets</a>
+												<ol>
+													<li><a href="#suicides_dataset">Suicides Dataset</a></li>
+													<li><a href="#happiness_dataset">Happiness Index Dataset</a></li>
+													<li><a href="#age_standardized">Crude vs. Age-Standardized Mortality</a></li>
+												</ol>
+											</li>
+											<li>
+												<a href="#python_cleaning">Data Cleaning (Python)</a>
+												  <ol>
+													<li><a href="#suicides_cleaning">Suicides Dataset Cleaning</a></li>
+													<li><a href="#error_note">A brief note on error</a></li>
+													<li><a href="#missing_val_note">A brief note on missing values</a></li>
+													<li><a href="#happiness_cleaning">Happiness Dataset Cleaning</a></li>
+												  </ol>
+											</li>
+											<li>
+												<a href="#querying_datasets">Querying Datasets and Extracting Views (SQL)</a>
+											</li>
+											<li>
+												<a href="#key_questions">Key Questions</a>
+											</li>
+											<li>
+												<a href="#suicides_within_year">Suicide Rates Within Each Year</a>
+												  <ol>
+													<li><a href="#within_year_country">Country-Level</a></li>
+													<li><a href="#within_year_age">Age Group</a></li>
+													<li><a href="#within_year_sex">Sex-Based</a></li>
+													<li><a href="#within_year_insights">Notable Insights</a></li>
+													<li><a href="#within_year_additional">Additional Charts</a></li>
+												  </ol>
+											</li>
+											<li>
+												<a href="#suicides_across_years">Suicide Rates Over Time (2006-2019)</a>
+												  <ol>
+													<li><a href="#across_year_country">Country-Level</a></li>
+													<li><a href="#across_year_age">Age Group</a></li>
+													<li><a href="#across_year_sex">Sex-Based</a></li>
+													<li><a href="#across_year_insights">Notable Insights</a></li>
+													<li><a href="#across_year_additional">Additional Charts</a></li>
+												  </ol>
+											</li>
+											<li>
+												<a href="#suicides_happiness">Suicide Rates and Happiness: Correlation?</a>
+												  <ol>
+													<li><a href="#happiness_brief_look">A brief look at the Happiness Index</a></li>
+													<li><a href="#acceptable_r_squared">Acceptable R-squared Values</a></li>
+													<li><a href="#suicides_happiness_compare">Suicide Rates and Happiness</a></li>
+													<li><a href="#happy_vs_unhappy">Happy vs. Unhappy Countries</a></li>
+													<li><a href="#happiness_insights">Notable Insights</a></li>
+													<li><a href="#happiness_additional">Additional Charts</a></li>
+												  </ol>
+											</li>
+											<li>
+												<a href="#limitations">Limitations</a>
+											</li>
+											<li>
+												<a href="#references">References</a>
+											</li>
+										</ol>
+									</header>
+								</div>
+							</section>
+
+							<section id="key_insights">
+								<div class="container">
+									<header class="major">
+										<h3>1.1 Key Insights</h3>
+									</header>
+									<ul>
+										<li><b>Suicide rates generally rise with age</b>, but this can vary by country.</li>
+										<li><b>Men generally experience higher rates than women.</b></li>
+										<li>Suicide rates have generally been on a downward trend, having <b>fallen by over 27% between
+											2006-2019.</b> When looking at specific countries and age groups, however, this can vary.</li>
+										<li><b>GDP per capita, and healthy life expectancy</b> seem to <b>play larger roles
+											in affecting suicide rates for the elderly.</b></li>
+										<li>The happiness of a country is <b>not a predictor, but rather a factor</b> in affecting suicide
+											rates.</li>
+									</ul>
+									
+								</div>
+							</section>
+
+							<section id="tools">
+								<div class="container">
+									<h3>1.2 Tools</h3>
+									<ul>
+										<li><b>Python:</b> Data cleaning</li>
+										<li><b>SQL Server (SSMS):</b> Data querying/wrangling</li>
+										<li><b>Tableau:</b> Interactive visualizations</li>
+									</ul>
+								</div>
+							</section>
+
+							<section id="datasets">
+								<div class="container">
+									<h2>2. Introducing the Suicide Rates and Happiness Datasets</h2>
+								</div>
+							</section>
+								
+							<section id="suicides_dataset">
+								<div class="container">
+									<h3>2.1 Suicides Dataset</h3>
+									<p>A dataset of total suicides split by age groups and sex was acquired using IHME’s <a href="https://vizhub.healthdata.org/gbd-results/">VizHub</a> data
+										tool with data from their Global Burden of Disease (GBD) study. A dataset of the corresponding
+										populations split by the same criteria was also acquired from the same tool. These datasets were
+										then cleaned and merged into one large dataset, and crude suicide rates per 100,000 population were
+										calculated per each population, which is the standard for population measures.</p>
+									<p>The population and suicide counts are estimates based on upper and lower bounds provided by
+										the dataset. For the sake of simplicity, those columns were dropped in the final merged dataset (see
+										Section 4.2).</p>
+										<p>Age groups were split by 5-year gaps:</p>
+									<ul>
+										<li>10-14 years</li>
+										<li>15-19 years</li>
+										<li>20-24 years</li>
+										<li>...</li>
+										<li>80-84 years</li>
+										<li>85+ years</li>
+									</ul>
+									<p>Age groups were broken up as such to provide insight into suicide rates at specific developmental
+										stages. The small age-ranges allow for greater granularity and more freedom in exploring the role of
+										age in suicides. Data was unavailable for ages under 10. All suicide rates, crude and age-standardized
+										in this report are per 100,000 population.</p>
+									<p>Ages 85+ were chosen as the ceiling because the populations of age groups 90+ were simply too
+										small, leading to less reliability and precision.</p>
+									<p>Additionally, estimated suicide counts that were less than 1 were filtered out as well to reduce sta-
+										tistical noise/outliers. Previously, somehow some countries had estimated suicide counts of less than
+										0.001, leading to extreme outliers in suicide rates. This may raise justified concerns regarding poor
+										data quality, which are acknowledged; however, there are few datasets that are this comprehensive,
+										so we will attempt to minimize this during the data cleaning process.</p>
+									<p>Below is a subset of the cleaned suicides dataset:</p>
+									<img
+										src="images/suicides_subset.PNG"
+										alt="Subset of the cleaned suicides dataset"
+									/>
+								</div>
+							</section>
+
+							<section id="happiness_dataset">
+								<div class="container">
+									<h3>2.2 Happiness Index Dataset</h3>
+								<p>The dataset for measuring happiness was taken from the <a href="https://worldhappiness.report/data/">World Happiness Report</a> from 2023, a
+									report by the United Nations that rates happiness per country through various measures. In short,
+									we have:</p>
+								<ul>
+									<li><b>Cantril life ladder (Happiness score): </b>Score from 0-10 of how good your life is at the
+										current moment.</li>
+									<li><b>Log GDP (PPP) per capita: </b>A measure of average income and living standards per person,
+										factoring in differences in the cost of living between countries. The logarithm is taken to
+										facilitate easier comparison between countries.</li>
+									<li><b>Social support: </b>Binary response to whether or not you have friends or family to rely on. A higher score indicates better social support.</li>
+									<li><b>Life expectancy at birth: </b>How long (in years) a newborn is expected to live.</li>
+									<li><b>Freedom to make life choices: </b>Binary response to whether you have enough freedom in choosing how to live your life. A higher score indicates more freedom.</li>
+									<li><b>Generosity: </b>How much a country's actual behavior of donating money to charity deviates from what would be predicted based on its GDP per capita. A positive value indicates greater charity than expected, and vice versa.</li>
+									<li><b>Perceptions of corruption: </b>Binary response to whether government is perceived corrupt and whether businesses are perceived corrupt. A higher score indicates higher perception of corruption.</li>
+									<li><b>Positive affect: </b>The amount of laugh, enjoyment, and interesting things experienced, averaged.</li>
+									<li><b>Negative affect: </b>The amount of worry, sadness, and anger experienced, averaged.</li>
+								</ul>
+								<p>A full appendix for a detailed explanation of each measure can be accessed 
+									<a href="https://happiness-report.s3.amazonaws.com/2023/WHR+23_Statistical_Appendix.pdf">here</a>. 
+									The World Happiness Report assigns a value to each field by averaging nationwide responses to these 
+									questions. The dataset begins from 2005, and data is collected on a yearly basis. Unfortunately, the 
+									happiness dataset is not age-standardized, so we have to assume that some of the more subjective 
+									measures above apply to all ages.</p>
+								<p>Below is a subset of the cleaned happiness index dataset:</p>
+								<img
+									src="images/happiness_subset.PNG"
+									alt="Subset of the cleaned happiness dataset"
+								/>
+								</div>
+							</section>
+
+							<section id="age_standardized">
+								<div class="container">
+									<h3>2.3 The use of crude versus age-standardized mortality rates</h3>
+									<p>It is important to note that we are not calculating the crude death rates for each age group
+										and sex split in the suicides dataset. As countries sometimes have vastly differing age distributions,
+										comparing crude rates of countries as a whole leads to inaccuracies. Therefore, we circumvent this
+										by calculating age-standardized mortality rates using the 
+										<a href="https://cdn.who.int/media/docs/default-source/gho-documents/global-health-estimates/gpe_discussion_paper_series_paper31_2001_age_standardization_rates.pdf">
+										WHO’s World Standard Population (page 12)</a>. A detailed guide on how to calculate it can be found 
+										<a href="https://www3.paho.org/hq/dmdocuments/2012/PAHO-Age-standardized-mortality-rates-2009.pdf">here</a>.</p>
+									<p>The WHO World Standard Population provides a distribution for all ages, starting from age 0
+										to 100+. However, as our dataset only contains data for ages 10+, we must adjust and normalize
+										the weights to conform to our needs. We can do this by:</p>
+									<ol>
+										<li>Combining the age groups in the World Standard Population distribution into the groups we
+											are using by summing the weights (i.e. 95-100 years and 100+ years → 95+ years).</li>
+										<li>Normalizing the resulting list of weights.</li>
+									</ol>
+									<p>This gives us the following distribution:</p>
+									<img
+										src="images/age_standardized.PNG"
+										alt="Age-standardized mortality rates for ages 10-85, with 5-year interval age groups"
+									/>
+								</div>
+							</section>
+
+							<section id="python_cleaning">
+								<div class="container">
+									<h2>3. Cleaning the datasets in Python (pandas)</h2>
+								</div>
+							</section>
+
+							<section id="suicides_cleaning">
+								<div class="container">
+									<h3>3.1 Suicides Dataset Cleaning</h3>
+									<p>The suicides and population datasets were cleaned and merged using the pandas library, and the
+										cleaning process can be accessed <a href="https://github.com/jamesinjune/Suicide_Rates_Exploration/blob/main/notebooks/Data_Cleaning_Suicides_Population.ipynb">here in a Jupyter notebook</a>. The cleaned dataset can be
+										accessed <a href="https://github.com/jamesinjune/Suicide_Rates_Exploration/blob/main/cleaned_data/Suicides_Population_merged_cleaned.csv">here</a>.</p>
+								</div>
+							</section>
+
+							<section id="error_note">
+								<div class="container">
+									<h3>3.2 A brief note on error</h3>
+									<p>The original suicides and population datasets had columns for upper and lower bounds to compensate for 
+										error. However, the decision was made to remove these columns as the upper and lower bounds provided 
+										were asymmetric, complicating our ability to take advantage of these error values. Therefore, while 
+										we acknowledge the existence of error in the data, they will not be addressed in this study.</p>
+								</div>
+							</section>
+
+							<section id="missing_val_note">
+								<div class="container">
+									<h3>3.3 A brief note on missing values</h3>
+									<p>The number of data values per year is inconsistent, due to missing values in the cleaning and merging
+										stages of forming the dataset. All rows with missing suicide or population data were dropped as
+										they provide no insight into the trends of suicide rates. Additionally, only countries found in both
+										the suicides dataset and the happiness dataset were kept. A consequence of this is that data from
+										2005 especially is too sparse to accurately represent the behavior of suicide rates in that year, so
+										they are also excluded from the final dataset.</p>
+								</div>
+							</section>
+
+							<section id="happiness_cleaning">
+								<div class="container">
+									<h3>3.4 Happiness Dataset Cleaning</h3>
+									<p>Similarly, the happiness dataset was also cleaned and merged with pandas, and can be accessed <a href="https://github.com/jamesinjune/Suicide_Rates_Exploration/blob/main/notebooks/Data_Cleaning_Happiness_Index.ipynb">here
+										in a Jupyter notebook</a>. The cleaned dataset can be accessed <a href="https://github.com/jamesinjune/Suicide_Rates_Exploration/blob/main/cleaned_data/Happiness_Index_cleaned.csv">here</a>.</p>
+								</div>
+							</section>
+
+							<section id="querying_datasets">
+								<div class="container">
+									<h2>4. Querying the datasets and extracting views (SQL Server)</h2>
+									<p>The cleaned suicides and happiness index datasets were then merged and queried to gain some initial
+										insight using SQL, for its ability to work easily with large datasets. SQL allowed us to wrangle the
+										data and calculate suicide rates split by age, sex, and both simultaneously, by country. This resulted
+										in the following four SQL queries, which split the population by different criteria and calculated the
+										corresponding suicide rates:</p>
+									<ol>
+										<li>Suicide Rates by Country</li>
+										<li>Suicide Rates by Country and Age</li>
+										<li>Suicide Rates by Country and Sex</li>
+										<li>Suicide Rates by Country, Age, and Sex</li>
+									</ol>
+									<p>These queries were then put into views and exported to create our visualizations. This would
+										allow us to look at how suicide rates vary from the country level down to how age and sex can affect
+										it.</p>
+									<p>The SQL file can be accessed <a href="https://github.com/jamesinjune/Suicide_Rates_Exploration/blob/main/suicides_queries_views.sql">here</a>, 
+										and the finalized datasets can be accessed <a href="https://github.com/jamesinjune/Suicide_Rates_Exploration/blob/main/final_visualization_data/Suicides_Rates_Happiness_datasets.xls">here</a>.</p>
+								</div>
+							</section>
+
+							<section id="key_questions">
+								<div class="container">
+									<h2>5. Key Questions</h2>
+									<p>We seek to answer the following key questions:</p>
+									<ol>
+										<li>How do suicide rates differ across countries?</li>
+										<li>How do age and sex affect suicide rates?</li>
+										<li>How have suicide rates changed from 2006-2019?</li>
+										<li>Do measures of happiness of a country affect their suicide rates, and to what extent?</li>
+									</ol>
+								</div>
+							</section>
+
+							<section id="suicides_within_year">
+								<div class="container">
+									<h2>6. Examining suicide rates within each year</h2>
+									<p>In order to provide a preliminary perspective on suicide rates, 
+										let us begin by examining the distributions of suicide rates within each year. 
+										For more tangible insights, skip to the Notable Insights section further below. 
+										Immediately below are a collection of boxplots that showcase the distribution of 
+										suicide rates across countries, age groups, and sex. Data is available for 2006-2019.</p>
+										<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+										<tableau-viz id="tableauViz1"       
+											src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/BoxplotSexAge?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+											height="40em" width="80vw" hide-tabs>
+										</tableau-viz>
+									<p>*Note that the scale is different between the male and female charts above.</p>
+								</div>
+							</section>
+
+							<section id="within_year_country">
+								<div class="container">
+									<h3>6.1 Country-Level</h3>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz2"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/BoxplotCountry_1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p><b>Suicide rates vary significantly across countries, even after accounting for age-standardization. </b>
+										In 2019, suicide rates ranged from 3.07 deaths per 100,000 in Kuwait to 52.71
+										deaths per 100,000 in Lesotho. While the median rate worldwide is around 10.99 deaths per 100,000,
+										there are a number of outliers that experience significantly higher rates. This pattern is consistent
+										across every year of data observed.</p>
+								</div>
+							</section>
+
+							<section id="within_year_age">
+								<div class="container">
+									<h3>6.2 Age Group</h3>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz3"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/BoxplotAge_1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p><b>Suicide rates generally increase with age. </b>As age increases, 
+										so do the median and IQR, resulting in the distribution becoming wider 
+										as more and more countries begin experiencing higher suicide rates. 
+										Globally, the elderly are the most at risk of suicide, with increasing 
+										standard deviations also indicating a greater spread in suicide rates as they trend upward.</p>
+									
+								</div>
+							</section>
+
+							<section id="within_year_sex">
+								<div class="container">
+									<h3>6.3 Sex-Based</h3>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz4"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/BoxplotSex_1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>Male and female suicide rates vary drastically in many countries, 
+										with <b>males generally experiencing higher suicide rates then females. </b>
+										For males, the distribution of suicide rates exhibits characteristics such as 
+										significantly higher medians, wider interquartile ranges, and longer upper whiskers compared to females.</p>
+									
+								</div>
+							</section>
+
+							<section id="within_year_insights">
+								<div class="container">
+									<h3>6.4 Notable Insights</h3>
+								</div>
+							</section>
+
+							<section id="within_year_insight_1">
+								<div class="container">
+									<h4>6.4.1 Suicide rates vary by age, depending on the country</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz5"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/SuicideRatesComparison?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>While suicide rates typically rise with age, these patterns can vary 
+										significantly from one country to another. For instance, in countries 
+										such as Finland, suicide rates peak between ages 45-59, but 
+										for the most part remain relatively even across most ages. Conversely, 
+										in countries such as Malaysia, suicide rates appear to increase with age, 
+										reaching their highest point at ages 85 and above. Furthermore, countries 
+										like Iran show higher rates among young adults compared to other age 
+										groups but peak later, around ages 85 and above.</p>
+									<p>In many countries, however, suicide rates peak as ages increase for both 
+										developed and less-developed countries. Consider the following distribution 
+										of peak suicide rates per country:</p>
+									<img
+										src="images/ages_with_highest_rate_in_countries.PNG"
+										alt="Count of age groups with highest suicide rates in each country"
+									/>
+									<p>Suicide rates in elderly may be higher in less developed countries due to a 
+										lack of an adequate healthcare system or support for elderly individuals. 
+										On the other hand, social isolation for elderly in developed nations play 
+										a role as well due to common societal attitudes. Of course, there are also 
+										a number of countries that see their highest suicide rates in the middle aged 
+										and in young adults, such as Finland and Thailand. The reality is that these 
+										are most likely only a small part of the vast number of unseen factors that play a role.</p>
+								</div>
+							</section>
+
+							<section id="within_year_insight_2">
+								<div class="container">
+									<h4>6.4.2 Suicide rates are much lower for ages 10-14, even compared to ages 15-19</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz6"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/Ages10-1415-19Comparison?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>Suicide rates for ages 10-14 are substantially lower compared to any other age group (visible in Sections 7.2 and 7.4.1). 
+										Mean and median suicide rates were less than 1 death per 100,000 in 2019, with a standard deviation of 0.8.</p>
+									<p>Suicide rates for ages 10-14 were also notably lower than rates observed for the 
+										directly adjacent ages 15-19, which in many cases saw much higher rates comparatively. 
+										The above graph shows the relationship between suicide rates of age groups 10-14 and 
+										15-19, by country and sex. Points above the line indicate that ages 15-19 in that 
+										country have a higher suicide rate than ages 10-14. Additionally, points further 
+										from the line indicate a larger difference between the corresponding suicide rates.</p>
+								</div>
+							</section>
+
+							<section id="within_year_insight_3">
+								<div class="container">
+									<h4>6.4.3 Men generally have higher suicide rates than women</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz7"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/Malevs_FemaleRates?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>On average, men experience higher suicide rates then women. The above graph shows the 
+										relationship between male and female suicide rates, split by country and age-group. 
+										The points that lie above the line indicate that for that particular country and 
+										age-group, men have a higher rate, and vice versa.</p>
+									<p>We can also observe gender disparity in suicide rates in the above chart. Points that 
+										lie closer to the line have similar rates for men and women, while points that lie 
+										farther indicate a greater disparity in male/female suicides.</p>
+									<p>Societal values and gender roles can be a factor in the gender disparity of suicide 
+										rates. Traditional gender roles are similar across the world, even in more developed 
+										countries (even if it is to a lesser extent), which would explain the gap in rates, 
+										although even that gap does vary greatly in size depending on the country and age group.</p>
+								</div>
+							</section>
+
+							<section id="within_year_additional">
+								<div class="container">
+									<h3>6.5 Additional Charts</h3>
+								</div>
+							</section>
+
+							<section id="within_year_additional_1">
+								<div class="container">
+									<h4>6.5.1 Suicide Rates Across the World</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz8"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/MapofSuicideRates?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+								</div>
+							</section>
+
+							<section id="within_year_additional_2">
+								<div class="container">
+									<h4>6.5.2 Top N Suicide Rates, by Year</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz9"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/TopNRatesbyYear?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+								</div>
+							</section>
+
+							<section id="within_year_additional_3">
+								<div class="container">
+									<h4>6.5.3 Top N Suicide Rates, by Country, Age, and Sex</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz10"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/TopNRatesbyAgeSex?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+								</div>
+							</section>
+
+
+							<section id="suicides_across_years">
+								<div class="container">
+									<h2>7. A look at suicide rates over time (from 2006-2019)</h2>
+									<p>Now, let us consider time as a factor from which to examine suicide rates. Suicides around the 
+										world have fluctuated with each passing year, with rates generally having decreased over the past 
+										decade. Below are a number of charts showcasing percentage and absolute-changes in suicide rates 
+										compared to rates in 2006, for each subsequent year. For example, a percentage change of -16.00% 
+										in 2017 means that suicide rates in 2017 were 16.00% lower than in 2006. The year of data shown 
+										is adjustable, and both percentage as well as absolute-changes in rates are visible in order to 
+										provide clarity on the scale of the data provided. These charts and boxplots are split by countries, 
+										age groups, and sex, with data available from 2006-2019.</p>
+									<p>A section below featuring <a href="#across_year_insights">notable insights</a> is available for those who wish to skip ahead, if preferred.</p>
+								</div>
+							</section>
+
+
+							<section id="across_year_country">
+								<div class="container">
+									<h3>7.1 Country-Level</h3>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz11"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/GlobalRates2006-2019?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p><b>By 2019, global suicide rates have fallen by over 27% since 2006</b>, equating to around 4.5 deaths 
+										per 100,000 population worldwide. Rates have generally decreased with each passing year, although drops 
+										in suicide rates have been less pronounced in recent years.</p>
+										<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+										<tableau-viz id="tableauViz12"       
+											src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/BoxplotTimeCountry?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+											height="40em" width="80vw" hide-tabs>
+										</tableau-viz>
+
+									<p>On the country level, <b>most countries have experienced a decline in suicide rates since
+										2006</b>. The above boxplot shows the distribution of changes in suicide rates since 2006 by country,
+										with red data points indicating an increase in suicide rates and blue data points indicating a decrease.
+										Most countries throughout the years have shown a decrease in country-wide suicide rates, with a
+										median percentage change in suicide rates of -11.83%.</p>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+										<tableau-viz id="tableauViz15"       
+											src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/ChangeinRatesCountry?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+											height="40em" width="80vw" hide-tabs>
+										</tableau-viz>
+									<p>It is important to reiterate that it is necessary to consider both the percentage and absolute-changes 
+										in suicide rates throughout this section. Percentage changes allow for an examination of a country's 
+										trends on its own scale, while absolute changes allow for a comparison between countries on the global scale.
+										The chart above shows the fluctuations in rates by country, and allows for direct comparisons between 
+										them. Note that some countries may contain null values due to incomplete data.</p>
+									<p>Changes in suicide rates may differ greatly by country, however. Rates may rise, fall, or fluctuate 
+										between years depending on the country. For a visual example, consider the countries of Georgia, 
+										Ukraine, and Guatemala in the above chart.</p>
+								</div>
+							</section>
+
+							<section id="across_year_age">
+								<div class="container">
+									<h3>7.2 Age Group</h3>
+									<p>Below are global suicide rate changes, split across age groups. Again, these are viewable in either percentage or absolute change.</p>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz13"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/ChangeinRatesAge?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p><b>Rates per age group have experienced a general downward trend since 2006</b>. The greatest decreases 
+										were observed in age groups 70+, with suicide rates in 2019 for ages 80-84 having fallen by over 43% since 2006.</p>
+									<p>Suicide rates worldwide for ages 10-14 have barely changed, however, fluctuating between 1-2 deaths 
+										per 100,000 population. Changes for other age groups have been more pronounced, with rates for ages 
+										80-84 and 85+ having dropped by more than 21 deaths per 100,000 by 2019. In fact, decreases in 
+										suicide rates since 2006 are shown be higher as age groups get older.</p>
+										<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+										<tableau-viz id="tableauViz14"       
+											src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/BoxplotTimeAge?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+											height="40em" width="80vw" hide-tabs>
+										</tableau-viz>
+									<p>For each age group, a majority of countries have experienced a decrease in suicide rates since 2006. 
+										In 2019, most age groups observed that at least 70% of countries had lower rates than in 2006, 
+										except for the age group 85 and above. Median values stayed consistently below 0, and for most 
+										age groups the third quartile is also below 0, indicating an overall noticeable decline in suicide 
+										rates for most ages across the world.</p>
+										<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+										<tableau-viz id="tableauViz15"       
+											src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/RatesbyAgeGroupsWithinaCountry?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+											height="40em" width="80vw" hide-tabs>
+										</tableau-viz>
+									<p>Rates may also vary greatly between countries and age groups. Countries such as South Korea have 
+										seen rates in most age groups rise in the late 2000s to early 2010s, and subsequently falling ever 
+										since. Germany, however, has seen patterns varying greatly between different age groups, with some 
+										experiencing an overall increase and others an overall decrease over the years.</p>
+								</div>
+							</section>
+
+							<section id="across_year_sex">
+								<div class="container">
+									<h3>7.3 Sex-Based</h3>
+									<p><b>Suicides for men and women have mostly been on a downward trend since 2006. </b>Global rates have fallen 
+										substantially for both sexes, although decreases in suicide rates seem to have slowed down in recent years.</p>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz16"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/ChangesinRatesSex?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>Male rates have seen a slightly greater decrease in absolute changes, while female rates experienced greater percentage changes overall.</p>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz17"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/BoxplotTimeSex?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>A majority of countries have experienced a decrease in suicide rates for both sexes since 2006. 
+										For men, more than 80% of countries had lower suicide rates in 2019 than in 2006. Women saw 
+										more than 85% of countries exhibit lower suicide rates in 2019 than in 2006. Compared to each 
+										other, more countries saw greater percentage decreases in female rates than male rates, a trend 
+										that persisted since 2006.</p>
+										<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+										<tableau-viz id="tableauViz18"       
+											src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/RatesbySexWithinACountry?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+											height="40em" width="80vw" hide-tabs>
+										</tableau-viz>
+									<p>On a country-level, however, as seen repeatedly above, trends vary greatly. Countries such as 
+										Russia saw a greater percentage decline in male rates than female rates. On the other hand, 
+										France has experienced the opposite, with female rates falling faster. Meanwhile, rates in 
+										the United States have grown since 2006, peaking in 2016 with female rates growing 
+										proportionally faster than male rates.</p>
+									<p>As with the countries and age groups examined above, patterns and numbers can vary greatly 
+										by sex. The above charts are available to you for further exploration.</p>
+								</div>
+							</section>
+
+							<section id="across_year_insights">
+								<div class="container">
+									<h3>7.4 Notable Insights</h3>
+								</div>
+							</section>
+
+							<section id="across_year_insight_1">
+								<div class="container">
+									<h4>7.4.1 Although global suicide rates have gone down, country-level patterns vary</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz19"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/Changesfrom2006?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>While the majority of countries around the world have experienced a decline in suicide rates since 2006, 
+										there are a few that have seen the opposite. Above are two charts showing the percentage and absolute 
+										changes in suicide rates over 2006-2019, by country.</p>
+								</div>
+							</section>
+
+							<section id="across_year_insight_2">
+								<div class="container">
+									<h4>7.4.2 The percentage of countries with increased suicide rates since 2006 varies greatly by age group</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz20"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/ProportionofCountrieswithIncreasedRates?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>In 2019, ages 85+ had the largest number of countries with increased suicide rates since 2006 
+										out of all age groups, at around 35% of countries in the dataset. Ages 10-14 had the least, 
+										at around 9% of countries in the dataset. A greater proportion of countries have also seen 
+										rising rates in young adults (ages 20-40) compared to other age groups.</p>
+									
+								</div>
+							</section>
+
+							<section id="across_year_insight_3">
+								<div class="container">
+									<h4>7.4.3 In some countries, suicide rates at different ages show similar overall trends</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz21"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/AgeWithinaCountryOverTime?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>In countries such as South Korea and Taiwan, the percentage-changes in suicide rates over the years for most 
+										age groups share a similar contour. In other words, they generally rise and fall together. In other countries, 
+										such as the United Kingdom and Egypt, however, percentage-changes seem to differ greatly between different age 
+										groups, without any overarching trend. This phenomenon also occurs between male and female rates for certain countries.</p>
+									
+								</div>
+							</section>
+
+							<section id="across_year_additional">
+								<div class="container">
+									<h3>7.5 Additional Charts</h3>
+								</div>
+							</section>
+
+							<section id="across_year_additional_1">
+								<div class="container">
+									<h4>7.5.1 Change in Suicide Rates Across the World</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz22"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/PercentageChangeMap?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+								</div>
+							</section>
+
+
+							<section id="suicides_happiness">
+								<div class="container">
+									<h2>8. Suicide rates and Happiness: A correlation?</h2>
+									<p></p>
+								</div>
+							</section>
+
+
+							<section id="happiness_brief_look">
+								<div class="container">
+									<h3>8.1 A look at the happiness index</h3>
+									<p>Now we would like to investigate whether there is a correlation between our suicide data and the 
+										perceived happiness of any given country. The Happiness Index dataset mentioned previously will 
+										be used as it has a number of measures that quantify happiness, development, quality of life, 
+										and other important aspects of a country.</p>
+									<p>First, let us take a brief look at each happiness measure. Below is the distribution of each available 
+										happiness measures, split between each available year.</p>
+										<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+										<tableau-viz id="tableauViz23"       
+											src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/HappinessDistribution?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+											height="40em" width="80vw" hide-tabs>
+										</tableau-viz>
+								</div>
+							</section>
+
+							<section id="acceptable_r_squared">
+								<div class="container">
+									<h3>8.2 Acceptable R-squared values in social sciences</h3>
+									<p>Before we begin looking at suicide rates and happiness, however, we need to clearly establish what we are looking for with this 
+										investigation. As Peterson K. Ozili puts it in his paper on empirical modelling, our objective is not to predict human behaviour 
+										but rather to determine if our measures are significant to the trend of suicide rates (Ozili 1). Therefore, for this exploration 
+										we will state that a low R-squared value can be acceptable given that our p-values are significant.</p>
+								</div>
+							</section>
+
+							<section id="suicides_happiness_compare">
+								<div class="container">
+									<h3>8.3 Suicide Rates and Happiness</h3>
+									<p>Below are a series of scatterplots of suicide rates against happiness measures, split by country, age, and gender. However, as seen 
+										in previous sections, age group and sex play a significant role in differing suicide rates around the world, and to different 
+										degrees depending on country. Therefore, we will primarily focus on suicide rates split by sex and age groups in order to see 
+										how each measure affects each split. </p>
+									<p>Note: The scatterplots can also be colored by a third happiness measure to look for correlations between two different happiness measures.</p>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz24"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/SuicidesHappinessbyAgeSex?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>A linear trend line was fitted to the above plot. The following were the most interesting observations:</p>
+									<ol>
+										<li><b>When plotted against life ladder scores, R-squared values increased with age</b>, with the greatest R-squared values 
+											(&#8776; 0.1 to 0.2) appearing between ages 65+ for both men and women. In other words, it is a possibility that as age 
+											increases, the overall happiness of a country plays a larger factor in lowering suicide rates.</li>
+										<li><b>Similar patterns were observed when charting suicide rates against GDP per capita and healthy life expectancy</b>. 
+											In fact, suicide rates seem most correlated to healthy life expectancy than any other measure for ages 65-74, with 
+											R-squared values of approximately 0.3. Logically, life expectancy and higher GDP per capita often corresponds to 
+											better provision of healthcare and longer periods of healthy living for the elderly, lowering associated risks of suicide.</li>
+										<li>For both men and women, <b>social support and suicide rates were positively correlated for younger ages, but 
+											negatively correlated for the elderly</b>. Additionally, for women social support was not statistically significant 
+											for the younger population, and had weak correlation. Elderly women (65-85) saw the greatest correlation between 
+											social support and suicide rates, with R-squared values &#8764;0.1. Conversely, men saw the opposite, with weak 
+											correlation at later ages and the strongest for young adults (20-40). This outcome is very interesting, as it 
+											implies the following: For elderly women, the presence of friends and family to rely on generally has a greater 
+											effect on reducing the risk of suicide. However, for younger men, the presence of people to rely on generally 
+											increases the risk of suicide. Of course, with these relatively low R-squared values, this is only one of many 
+											factors at play, but it is still interesting nonetheless.</li>
+										<li>For the most part, every other happiness measure seem to be significant for most age/gender groupings, although 
+											the magnitude of their effect may be much smaller.</li>
+									</ol>
+									<p>The rest of the scatterplots can be seen below:</p>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz25"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/SuicidesHappinessbyCountry?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz26"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/SuicidesHappinessbyAge?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz27"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/SuicidesHappinessbySex?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+								</div>
+							</section>
+
+							<section id="happy_vs_unhappy">
+								<div class="container">
+									<h3>8.4 Distribution of suicide rates, by ’happy’ and ’unhappy’ countries</h3>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz28"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/BoxplotHappyCountries_1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz29"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/BoxplotUnhappyCountries_1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>The above boxplots show the distribution of suicide rates for 'happy countries' and 'unhappy countries', respectively. 
+										For the sake of simplicity, the dataset was split into two at the median life ladder value. The distributions of 
+										suicide rates actually shows that <b>for males under age 50, higher suicide rates are more common among 'happy' countries than among 'unhappy' countries</b>. 
+										Median values, 25th and 75th percentiles, and even maximum values (outside of outliers) of suicide rates are greater 
+										in the 'happy' set. As age increases beyond that, however, the 'unhappy' set begins to experience a greater proportion 
+										of countries with higher suicide rates than the 'happy' set. Women also experience a similar phenomenon, albeit to a 
+										much smaller extent.</p>
+								</div>
+							</section>
+
+							<section id="happiness_insights">
+								<div class="container">
+									<h3>8.5 Notable Insights</h3>
+								</div>
+							</section>
+
+							<section id="happiness_insight_1">
+								<div class="container">
+									<h4>8.5.1 Suicide Rate and Happiness Index trends over time, on a country-level, are unlikely to be highly correlated</h4>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz30"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/SuicidesHappinessTrendsOverTime?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+									<p>The above graph plots suicide rates and a specified happiness measure for a specified country over time. Common 
+										trends and patterns between the two would imply the possibility of correlation. If both rise and fall together, 
+										this would imply that the two could be related.</p>
+									<p>Consider the above, which charts the suicide rates and life ladder scores of South Korean women, ages 30-34, 
+										from 2006-2019. The contours of both lines, however, do not seem to follow similar patterns, with suicide rates 
+										falling since 2009 while life ladder scores fluctuate greatly. For most countries and measures, the above is 
+										the case, however, with even suicide rates between different age groups and sex varying greatly.</p>
+									<p>However, it would also be erroneous to confidently say that our happiness measures play no role in affecting 
+										suicide rates. It is most likely that they each only play a small role in the larger picture, as is the case 
+										most of the time in the study of social sciences.</p>
+									<p>Note: The generosity field was normalized for this chart due to the dual axis, and negative numbers affecting 
+										its readability. Normalization allows us to scale the values from 0-1, with values representing how generous 
+										a country is relative to how generous it should be (according to the WHR), but we lose the information of 
+										whether it is more or less generous than it should be. Therefore, this field is normalized for the above chart only.</p>
+								</div>
+							</section>
+
+							<section id="happiness_additional">
+								<div class="container">
+									<h3>8.6 Additional Charts</h3>
+									<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js" ></script>
+									<tableau-viz id="tableauViz31"       
+										src='https://public.tableau.com/views/SuicideRatesStudyAge-Standardized2_0/HappinessMap?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link'    
+										height="40em" width="80vw" hide-tabs>
+									</tableau-viz>
+								</div>
+							</section>
+
+							<section id="limitations">
+								<div class="container">
+									<h2>9 Limitations</h2>
+									<p>There are many limiting factors to this exploration, as brought up repeatedly above. Each measure plays a role of varying 
+										degree depending on age group and gender, not to mention the difficulty to quantify many variables not included in this 
+										study. For example, topics such as wealth disparity and easy access to means of suicide may be significant, but are also 
+										difficult to quantify.</p>
+									<p>There is also the problem that the responses to the Happiness Index measures were not age-separated, meaning that the 
+										correlation to suicide rates was based on the national average consensus. Of course, different age groups may respond 
+										very differently to their perception of their country. The World Happiness Report state that 
+										<a href="https://worldhappiness.report/faq/#:~:text=The%20typical%20annual%20sample%20for,sample%20size%20would%20be%203%2C000.">their sample size for each country is 1,000 people</a>, 
+										which they state is a 'reasonably good estimate'. But is it a good representation of each age group?</p>
+									<p>However, that also does not mean that the results above are insignificant. Our goal was to find out what 
+										factors may simply be part of the equation, in order to provide starting points for how countries may 
+										seek to lower suicide rates. We also had to work within the limitations of our two main datasets. 
+										Hopefully, as more nations become more aware and educated on the many facets of mental health and suicides, 
+										we may gain access to better tools and more accurate data with which we may conduct more practical research.</p>
+								</div>
+							</section>
+
+							<section id="references">
+								<div class="container">
+									<h2>10 References</h2>
+									<p>Ozili, Peterson K, The Acceptable R-Square in Empirical Modelling for Social Science Research (June 5, 2022). Social Research Methodology and Publishing Results, Available at SSRN: https://ssrn.com/abstract=4128165 or http://dx.doi.org/10.2139/ssrn.4128165</p>
+								</div>
+							</section>
+
+
+
+
+
+
+
+
+
+
+
+							
+
+							
+
+						<!-- Five -->
+						<!--
+							<section id="five">
+								<div class="container">
+									<h3>Elements</h3>
+
+									<section>
+										<h4>Text</h4>
+										<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+										This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+										This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+										<hr />
+										<header>
+											<h4>Heading with a Subtitle</h4>
+											<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+										</header>
+										<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+										<header>
+											<h5>Heading with a Subtitle</h5>
+											<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+										</header>
+										<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
+										<hr />
+										<h2>Heading Level 2</h2>
+										<h3>Heading Level 3</h3>
+										<h4>Heading Level 4</h4>
+										<h5>Heading Level 5</h5>
+										<h6>Heading Level 6</h6>
+										<hr />
+										<h5>Blockquote</h5>
+										<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+										<h5>Preformatted</h5>
+										<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+									</section>
+
+									<section>
+										<h4>Lists</h4>
+										<div class="row">
+											<div class="col-6 col-12-xsmall">
+												<h5>Unordered</h5>
+												<ul>
+													<li>Dolor pulvinar etiam magna etiam.</li>
+													<li>Sagittis adipiscing lorem eleifend.</li>
+													<li>Felis enim feugiat dolore viverra.</li>
+												</ul>
+												<h5>Alternate</h5>
+												<ul class="alt">
+													<li>Dolor pulvinar etiam magna etiam.</li>
+													<li>Sagittis adipiscing lorem eleifend.</li>
+													<li>Felis enim feugiat dolore viverra.</li>
+												</ul>
+											</div>
+											<div class="col-6 col-12-xsmall">
+												<h5>Ordered</h5>
+												<ol>
+													<li>Dolor pulvinar etiam magna etiam.</li>
+													<li>Etiam vel felis at lorem sed viverra.</li>
+													<li>Felis enim feugiat dolore viverra.</li>
+													<li>Dolor pulvinar etiam magna etiam.</li>
+													<li>Etiam vel felis at lorem sed viverra.</li>
+													<li>Felis enim feugiat dolore viverra.</li>
+												</ol>
+												<h5>Icons</h5>
+												<ul class="icons">
+													<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+													<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+													<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+													<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+													<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+													<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
+												</ul>
+											</div>
+										</div>
+										<h5>Actions</h5>
+										<ul class="actions">
+											<li><a href="#" class="button primary">Default</a></li>
+											<li><a href="#" class="button">Default</a></li>
+											<li><a href="#" class="button alt">Default</a></li>
+										</ul>
+										<ul class="actions small">
+											<li><a href="#" class="button primary small">Small</a></li>
+											<li><a href="#" class="button small">Small</a></li>
+											<li><a href="#" class="button alt small">Small</a></li>
+										</ul>
+										<div class="row">
+											<div class="col-3 col-6-medium col-12-xsmall">
+												<ul class="actions stacked">
+													<li><a href="#" class="button primary">Default</a></li>
+													<li><a href="#" class="button">Default</a></li>
+													<li><a href="#" class="button alt">Default</a></li>
+												</ul>
+											</div>
+											<div class="col-3 col-6 col-12-xsmall">
+												<ul class="actions stacked">
+													<li><a href="#" class="button primary small">Small</a></li>
+													<li><a href="#" class="button small">Small</a></li>
+													<li><a href="#" class="button alt small">Small</a></li>
+												</ul>
+											</div>
+											<div class="col-3 col-6-medium col-12-xsmall">
+												<ul class="actions stacked">
+													<li><a href="#" class="button primary fit">Default</a></li>
+													<li><a href="#" class="button fit">Default</a></li>
+													<li><a href="#" class="button alt fit">Default</a></li>
+												</ul>
+											</div>
+											<div class="col-3 col-6-medium col-12-xsmall">
+												<ul class="actions stacked">
+													<li><a href="#" class="button primary small fit">Small</a></li>
+													<li><a href="#" class="button small fit">Small</a></li>
+													<li><a href="#" class="button alt small fit">Small</a></li>
+												</ul>
+											</div>
+										</div>
+									</section>
+
+									<section>
+										<h4>Table</h4>
+										<h5>Default</h5>
+										<div class="table-wrapper">
+											<table>
+												<thead>
+													<tr>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Price</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Item One</td>
+														<td>Ante turpis integer aliquet porttitor.</td>
+														<td>29.99</td>
+													</tr>
+													<tr>
+														<td>Item Two</td>
+														<td>Vis ac commodo adipiscing arcu aliquet.</td>
+														<td>19.99</td>
+													</tr>
+													<tr>
+														<td>Item Three</td>
+														<td> Morbi faucibus arcu accumsan lorem.</td>
+														<td>29.99</td>
+													</tr>
+													<tr>
+														<td>Item Four</td>
+														<td>Vitae integer tempus condimentum.</td>
+														<td>19.99</td>
+													</tr>
+													<tr>
+														<td>Item Five</td>
+														<td>Ante turpis integer aliquet porttitor.</td>
+														<td>29.99</td>
+													</tr>
+												</tbody>
+												<tfoot>
+													<tr>
+														<td colspan="2"></td>
+														<td>100.00</td>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+
+										<h5>Alternate</h5>
+										<div class="table-wrapper">
+											<table class="alt">
+												<thead>
+													<tr>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Price</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Item One</td>
+														<td>Ante turpis integer aliquet porttitor.</td>
+														<td>29.99</td>
+													</tr>
+													<tr>
+														<td>Item Two</td>
+														<td>Vis ac commodo adipiscing arcu aliquet.</td>
+														<td>19.99</td>
+													</tr>
+													<tr>
+														<td>Item Three</td>
+														<td> Morbi faucibus arcu accumsan lorem.</td>
+														<td>29.99</td>
+													</tr>
+													<tr>
+														<td>Item Four</td>
+														<td>Vitae integer tempus condimentum.</td>
+														<td>19.99</td>
+													</tr>
+													<tr>
+														<td>Item Five</td>
+														<td>Ante turpis integer aliquet porttitor.</td>
+														<td>29.99</td>
+													</tr>
+												</tbody>
+												<tfoot>
+													<tr>
+														<td colspan="2"></td>
+														<td>100.00</td>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+									</section>
+
+									<section>
+										<h4>Buttons</h4>
+										<ul class="actions">
+											<li><a href="#" class="button primary">Primary</a></li>
+											<li><a href="#" class="button">Default</a></li>
+											<li><a href="#" class="button alt">Alternate</a></li>
+										</ul>
+										<ul class="actions">
+											<li><a href="#" class="button primary large">Large</a></li>
+											<li><a href="#" class="button">Default</a></li>
+											<li><a href="#" class="button alt small">Small</a></li>
+										</ul>
+										<ul class="actions fit">
+											<li><a href="#" class="button primary fit">Fit</a></li>
+											<li><a href="#" class="button fit">Fit</a></li>
+											<li><a href="#" class="button alt fit">Fit</a></li>
+										</ul>
+										<ul class="actions fit small">
+											<li><a href="#" class="button primary fit small">Fit + Small</a></li>
+											<li><a href="#" class="button fit small">Fit + Small</a></li>
+											<li><a href="#" class="button alt fit small">Fit + Small</a></li>
+										</ul>
+										<ul class="actions">
+											<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
+											<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+											<li><a href="#" class="button alt icon solid fa-check">Icon</a></li>
+										</ul>
+										<ul class="actions">
+											<li><span class="button primary disabled">Primary</span></li>
+											<li><span class="button disabled">Default</span></li>
+											<li><span class="button alt disabled">Alternate</span></li>
+										</ul>
+									</section>
+
+									<section>
+										<h4>Form</h4>
+										<form method="post" action="#">
+											<div class="row gtr-uniform">
+												<div class="col-6 col-12-xsmall">
+													<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+												</div>
+												<div class="col-6 col-12-xsmall">
+													<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+												</div>
+												<div class="col-12">
+													<select name="demo-category" id="demo-category">
+														<option value="">- Category -</option>
+														<option value="1">Manufacturing</option>
+														<option value="1">Shipping</option>
+														<option value="1">Administration</option>
+														<option value="1">Human Resources</option>
+													</select>
+												</div>
+												<div class="col-4 col-12-medium">
+													<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+													<label for="demo-priority-low">Low Priority</label>
+												</div>
+												<div class="col-4 col-12-medium">
+													<input type="radio" id="demo-priority-normal" name="demo-priority">
+													<label for="demo-priority-normal">Normal Priority</label>
+												</div>
+												<div class="col-4 col-12-medium">
+													<input type="radio" id="demo-priority-high" name="demo-priority">
+													<label for="demo-priority-high">High Priority</label>
+												</div>
+												<div class="col-6 col-12-medium">
+													<input type="checkbox" id="demo-copy" name="demo-copy">
+													<label for="demo-copy">Email me a copy of this message</label>
+												</div>
+												<div class="col-6 col-12-medium">
+													<input type="checkbox" id="demo-human" name="demo-human" checked>
+													<label for="demo-human">I am a human and not a robot</label>
+												</div>
+												<div class="col-12">
+													<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+												</div>
+												<div class="col-12">
+													<ul class="actions">
+														<li><input type="submit" value="Send Message" /></li>
+														<li><input type="reset" value="Reset" class="alt" /></li>
+													</ul>
+												</div>
+											</div>
+										</form>
+									</section>
+
+									<section>
+										<h4>Image</h4>
+										<h5>Fit</h5>
+										<span class="image fit"><img src="images/banner.jpg" alt="" /></span>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+											</div>
+										</div>
+										<h5>Left &amp; Right</h5>
+										<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+										<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+									</section>
+
+								</div>
+							</section>
+						-->
+
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>James Li</li>
+								<li> <a href="https://github.com/jamesinjune"><img src="images/github-mark.svg" width="14px" style="margin: 0;"/> jamesinjune</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
