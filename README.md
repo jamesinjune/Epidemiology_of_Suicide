@@ -1,11 +1,10 @@
-# Epidemiology of Suicide
+# [Epidemiology of Suicide](https://jamesinjune.github.io/Epidemiology_of_Suicide/)
 A data exploration of suicide rates in the 21st century.
 
 ---
 
 ## Detailed Report
-This README file serves as a brief introduction to the project.
-**[The complete exploration and report can be accessed here](https://jamesinjune.github.io/Epidemiology_of_Suicide/).**
+**[The complete exploration and report can be accessed here](https://jamesinjune.github.io/Epidemiology_of_Suicide/).** This README file only serves as a brief introduction to the project.
 
 ---
 
