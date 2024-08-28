@@ -21,11 +21,12 @@ section, summary, time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Verdana",Helvetica,Arial,sans-serif;
+	font: "Verdana",Helvetica,Arial,sans-serif;
 	font-size: 17.2px;
+	/*transform: scale(0.98);
+    transform-origin: top; */
 	vertical-align: baseline;}
-
 
 
 
@@ -293,6 +294,7 @@ input, select, textarea {
 	h2 {
 		font-size: 33px;
 		line-height: 1.3em;
+		padding: 1em 0 0em 0;
 	}
 
 	h3 {
@@ -304,6 +306,7 @@ input, select, textarea {
 	h4 {
 		font-size: 24px;
 		line-height: 1.5em;
+		padding: 0em 0em 0em 0em;
 	}
 
 	h5 {
@@ -316,6 +319,7 @@ input, select, textarea {
 		line-height: 1.2em;
 		color:#777;
 		margin-bottom: 1.2em;
+		padding: 1em 0em 0em 0em;
 	}
 
 	sub {
@@ -2849,7 +2853,7 @@ input, select, textarea {
 		-webkit-justify-content: space-between;
 		-ms-justify-content: space-between;
 		justify-content: space-between;
-		background: #4acaa8;
+		background: #757575;
 		color: #d2f2e9;
 		height: 100%;
 		overflow-y: auto;
@@ -2869,11 +2873,11 @@ input, select, textarea {
 			}
 
 		#header header p {
-			color: #b7eadc;
+			color: #000000;
 		}
 
 		#header a {
-			color: #d2f2e9;
+			color: #000000;
 		}
 
 			#header a:hover {
@@ -3040,7 +3044,7 @@ input, select, textarea {
 		/* Main */
 
 			#main > section > .container {
-				padding: 1em 0 0em 0;
+				padding: 0.5em 0 0em 0;
 			}
 		
 		
