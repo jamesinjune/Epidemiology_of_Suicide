@@ -29,4 +29,4 @@ The [final dataset](https://github.com/jamesinjune/Suicide_Rates_Exploration/blo
 - **Happiness, GDP per capita, and healthy life expectancy** seem to **play larger roles in affecting suicide rates for the elderly**.
 - The happiness of a country is **not a predictor, but rather a factor** in affecting suicide rates.
 
-Again, please visit [here](INSERT URL HERE) for the complete report.
+Again, please visit [here](https://jamesinjune.github.io/Epidemiology_of_Suicide/) for the complete report.
